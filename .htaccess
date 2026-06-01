@@ -1,0 +1,15 @@
+# For Passenger WSGI
+PassengerEnabled on
+PassengerAppRoot /home/bdcrafte/bdcrafter
+PassengerPython /home/bdcrafte/virtualenv/bdcrafter/3.11/bin/python
+
+# Set environment variables
+SetEnv DJANGO_SETTINGS_MODULE bdcrafter.settings
+
+# Don't show directory listings
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(env|pyc|sqlite3|db|log)$">
+    Require all denied
+</FilesMatch>
