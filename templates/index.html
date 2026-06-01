@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 md:pt-28 pb-20 md:pb-28 bg-white">
+        <div class="max-w-4xl mx-auto px-6 md:px-8 text-center">
+            <div class="inline-flex items-center gap-2 mb-6">
+                <span class="badge-subtle">Global digital agency</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight text-[#281018] leading-[1.1]">Crafting Digital<br>Experiences That Matter</h1>
+            <p class="text-[#5e5b60] text-lg max-w-2xl mx-auto mt-6 leading-relaxed font-normal">Our UI/UX design company delivers digital solutions that drive success and elevate your brand's presence in the digital world.</p>
+            <div class="flex flex-wrap gap-3 justify-center mt-10">
+                <a href="#project-form" class="btn-primary">Get Started →</a>
+                <a href="#projects" class="btn-outline">View Our Work</a>
+            </div>
+            <!-- stats row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-6 border-t border-gray-100 max-w-3xl mx-auto">
+                <div><div class="stat-number">{{ stats.projects }}+</div><div class="stat-label">Projects Completed</div></div>
+                <div><div class="stat-number">98%</div><div class="stat-label">Client Satisfaction</div></div>
+                <div><div class="stat-number">{{ stats.experience }}+</div><div class="stat-label">Years Experience</div></div>
+                <div><div class="stat-number">{{ stats.support }}</div><div class="stat-label">Support Available</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white border-t border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-[#01A649] text-sm font-medium tracking-wide">What we offer</span>
+                <h2 class="text-3xl md:text-4xl font-semibold mt-2 text-[#281018]">Comprehensive Web Solutions</h2>
+                <p class="text-[#6c6c70] mt-4">From doctor portfolios to enterprise web apps — we craft, maintain & fix anything.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for service in services %}
+                <div class="apple-card p-7">
+                    <div class="w-11 h-11 rounded-full bg-[#f2f2f5] flex items-center justify-center mb-5">
+                        <i class="{{ service.icon_class }} text-[#01A649] text-lg"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#281018]">{{ service.title }}</h3>
+                    <p class="text-[#6c6c70] mt-2 text-sm leading-relaxed">{{ service.description }}</p>
+                </div>
+                {% empty %}
+                <!-- Default services if none in database -->
+                <div class="apple-card p-7"><div class="w-11 h-11 rounded-full bg-[#f2f2f5] flex items-center justify-center mb-5"><i class="fas fa-laptop-code text-[#01A649] text-lg"></i></div><h3 class="text-xl font-semibold text-[#281018]">Landing Pages</h3><p class="text-[#6c6c70] mt-2 text-sm">High-converting, pixel-perfect landing pages that capture leads and drive sales.</p></div>
+                <div class="apple-card p-7"><div class="w-11 h-11 rounded-full bg-[#f2f2f5] flex items-center justify-center mb-5"><i class="fas fa-user-md text-[#01A649] text-lg"></i></div><h3 class="text-xl font-semibold text-[#281018]">Doctor Portfolios</h3><p class="text-[#6c6c70] mt-2 text-sm">Elegant, trust-building portfolio websites for medical professionals.</p></div>
+                <div class="apple-card p-7"><div class="w-11 h-11 rounded-full bg-[#f2f2f5] flex items-center justify-center mb-5"><i class="fas fa-shopping-cart text-[#01A649] text-lg"></i></div><h3 class="text-xl font-semibold text-[#281018]">E‑commerce</h3><p class="text-[#6c6c70] mt-2 text-sm">Scalable online stores with seamless checkout & inventory management.</p></div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Expertise Section -->
+    <section id="platforms" class="py-20 bg-[#fefefe] border-y border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 text-center">
+            <h2 class="text-3xl font-semibold section-title">Build on <span class="text-[#01A649]">any platform</span> you love</h2>
+            <p class="text-[#6c6c70] max-w-2xl mx-auto mt-3">Framer · Wix · Squarespace · Custom Code · MERN · Django · Next.js — we speak all.</p>
+            <div class="flex flex-wrap justify-center gap-3 mt-10">
+                <span class="platform-pill"><i class="fab fa-figma text-[#01A649] mr-2"></i>Framer</span>
+                <span class="platform-pill"><i class="fab fa-wix text-[#01A649] mr-2"></i>Wix</span>
+                <span class="platform-pill"><i class="fas fa-cube text-[#01A649] mr-2"></i>Squarespace</span>
+                <span class="platform-pill"><i class="fas fa-code text-[#01A649] mr-2"></i>Custom Code</span>
+                <span class="platform-pill"><i class="fab fa-react text-[#01A649] mr-2"></i>MERN</span>
+                <span class="platform-pill"><i class="fab fa-python text-[#01A649] mr-2"></i>Django</span>
+                <span class="platform-pill"><i class="fab fa-js-square text-[#01A649] mr-2"></i>Next.js</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase -->
+    <section id="projects" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="text-center mb-14">
+                <span class="text-[#01A649] text-sm font-medium">Recent work</span>
+                <h2 class="text-3xl md:text-4xl font-semibold mt-1 text-[#281018]">Projects That Inspire</h2>
+                <p class="text-[#6c6c70] mt-2">Real solutions delivered for clients worldwide — doctor portfolios, dashboards, e‑commerce.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
+                {% for project in projects %}
+                <a href="{% url 'core:project_detail' project.pk %}" class="rounded-2xl overflow-hidden bg-white border border-gray-100 transition hover:border-gray-200 block hover:-translate-y-1 duration-200">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-56 object-cover">
+                    {% else %}
+                    <img src="https://placehold.co/600x420/f5f5f7/281018?text={{ project.title|urlencode }}" alt="{{ project.title }}" class="w-full h-56 object-cover">
+                    {% endif %}
+                    <div class="p-5">
+                        <p class="font-semibold text-[#281018]">{{ project.title }}</p>
+                        <p class="text-sm text-[#8e8e93]">{{ project.category }}</p>
+                        <p class="text-xs text-[#01A649] mt-2">{{ project.technologies }}</p>
+                    </div>
+                </a>
+                {% empty %}
+                <!-- Default project placeholders -->
+                <div class="rounded-2xl overflow-hidden bg-white border border-gray-100"><img src="https://placehold.co/600x420/f5f5f7/281018?text=Doctor+Portfolio" class="w-full h-56 object-cover"><div class="p-5"><p class="font-semibold">Dr. Sarah Williams</p><p class="text-sm text-[#8e8e93]">Medical Portfolio · Framer</p></div></div>
+                <div class="rounded-2xl overflow-hidden bg-white border border-gray-100"><img src="https://placehold.co/600x420/f7f7f9/281018?text=Ecommerce+Store" class="w-full h-56 object-cover"><div class="p-5"><p class="font-semibold">Urban Mart</p><p class="text-sm text-[#8e8e93]">Next.js E‑commerce</p></div></div>
+                <div class="rounded-2xl overflow-hidden bg-white border border-gray-100"><img src="https://placehold.co/600x420/f3f3f6/281018?text=Fintech+Dashboard" class="w-full h-56 object-cover"><div class="p-5"><p class="font-semibold">Fintech Dashboard</p><p class="text-sm text-[#8e8e93]">Django + React</p></div></div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{% url 'core:all_projects' %}" class="btn-outline">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Request Form Section -->
+    <section id="project-form" class="py-24 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-5xl mx-auto px-6 md:px-8">
+            <div class="text-center mb-12">
+                <span class="text-[#01A649] text-sm font-medium tracking-wide">Start Your Project</span>
+                <h2 class="text-3xl md:text-4xl font-semibold mt-2 text-[#281018]">Let's Get Started</h2>
+                <p class="text-[#6c6c70] mt-4 max-w-2xl mx-auto">Our UI/UX design company delivers digital solutions that drive success and elevate your brand's presence in the digital world.</p>
+            </div>
+            
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <!-- Left side - Image/CTA -->
+                    <div class="bg-[#01A649] p-8 md:p-10 flex flex-col justify-center text-white">
+                        <div class="mb-6">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                                <i class="fas fa-rocket text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Start Your Digital Journey</h3>
+                            <p class="text-white/80 leading-relaxed">Tell us about your vision, and we'll transform it into a powerful digital solution that drives real business results.</p>
+                        </div>
+                        <div class="space-y-4 mt-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-white/80"></i>
+                                <span class="text-sm">100% Satisfaction Guaranteed</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-white/80"></i>
+                                <span class="text-sm">Free Consultation & Quote</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-white/80"></i>
+                                <span class="text-sm">Dedicated Project Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side - Form -->
+                    <div class="p-8 md:p-10">
+                        <form method="POST" action="{% url 'core:home' %}" class="space-y-5">
+                            {% csrf_token %}
+                            <input type="hidden" name="project_submit" value="1">
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-[#281018] mb-2">Full Name <span class="text-red-500">*</span></label>
+                                {{ form.full_name }}
+                                {% if form.full_name.errors %}
+                                    <p class="text-red-500 text-xs mt-1">{{ form.full_name.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-[#281018] mb-2">Company/Org</label>
+                                {{ form.company_org }}
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-[#281018] mb-2">Number <span class="text-red-500">*</span></label>
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <p class="text-red-500 text-xs mt-1">{{ form.phone_number.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-[#281018] mb-2">E-mail <span class="text-red-500">*</span></label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <p class="text-red-500 text-xs mt-1">{{ form.email.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-[#281018] mb-2">Tell us about the project</label>
+                                {{ form.project_description }}
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-[#281018] mb-2">What's your budget? <span class="text-red-500">*</span></label>
+                                {{ form.budget }}
+                                {% if form.budget.errors %}
+                                    <p class="text-red-500 text-xs mt-1">{{ form.budget.errors.0 }}</p>
+                                {% endif %}
+                            </div>
+                            
+                            <button type="submit" class="w-full btn-primary py-3 text-center">
+                                Submit Project Request <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-1 text-[#01A649] text-xl mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <h2 class="text-3xl font-semibold text-[#281018]">Trusted by 100+ clients worldwide</h2>
+            <p class="text-[#6c6c70] mb-12">Real reviews from doctor portfolios, business websites & web apps</p>
+            <div class="grid md:grid-cols-3 gap-7">
+                <div class="review-card p-6 text-left"><div class="flex items-center gap-3 mb-4"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-11 h-11 rounded-full object-cover"><div><p class="font-semibold">Emily Johnson</p><p class="text-xs text-[#01A649]">CEO, HealthPlus</p></div></div><p class="text-[#5e5b60] text-sm">"BD Crafter built a stunning doctor portfolio for our medical team. Patient trust increased significantly."</p><div class="mt-3 text-[#01A649] text-sm">★★★★★</div></div>
+                <div class="review-card p-6 text-left"><div class="flex items-center gap-3 mb-4"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-11 h-11 rounded-full object-cover"><div><p class="font-semibold">Michael Chen</p><p class="text-xs text-[#01A649]">Founder, UrbanCart</p></div></div><p class="text-[#5e5b60] text-sm">"Our Next.js e‑commerce store exceeded expectations. Sales grew 35% after launch."</p><div class="mt-3 text-[#01A649] text-sm">★★★★★</div></div>
+                <div class="review-card p-6 text-left"><div class="flex items-center gap-3 mb-4"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-11 h-11 rounded-full object-cover"><div><p class="font-semibold">Dr. Sarah Ahmed</p><p class="text-xs text-[#01A649]">Cardiologist</p></div></div><p class="text-[#5e5b60] text-sm">"Redesigned my portfolio with Framer — modern, fast, elegant. Received multiple patient inquiries."</p><div class="mt-3 text-[#01A649] text-sm">★★★★★</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-[#fbfbfd] border-t border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 text-center">
+            <h2 class="text-3xl font-semibold text-[#281018]">Flexible Plans — <span class="text-[#01A649]">Pay for what you need</span></h2>
+            <p class="text-[#6c6c70] max-w-2xl mx-auto mt-2">Custom pricing based on your unique service: new website, maintenance, revamp or full‑stack app.</p>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="apple-card p-7 text-left"><div class="text-xl font-semibold text-[#01A649]">Startup Launch</div><div class="mt-3 text-3xl font-semibold">$599</div><p class="text-[#6c6c70] text-sm mt-1">Landing page or doctor portfolio – 5 pages, responsive, SEO basics</p><ul class="mt-5 space-y-2 text-sm"><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Custom design</li><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Mobile optimized</li><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> 1 round of revisions</li></ul></div>
+                <div class="apple-card p-7 border-l-2 border-l-[#01A649] text-left"><div class="text-xl font-semibold text-[#01A649]">Business Pro</div><div class="mt-3 text-3xl font-semibold">$1,499</div><p class="text-[#6c6c70] text-sm mt-1">Full business website / e‑commerce – up to 12 pages + CMS</p><ul class="mt-5 space-y-2 text-sm"><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Custom backend</li><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Maintenance 3 months free</li><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Performance optimization</li></ul></div>
+                <div class="apple-card p-7 text-left"><div class="text-xl font-semibold text-[#01A649]">Agency Elite</div><div class="mt-3 text-3xl font-semibold">Custom Quote</div><p class="text-[#6c6c70] text-sm mt-1">Complex web apps, maintenance retainer & dedicated support</p><ul class="mt-5 space-y-2 text-sm"><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Tailored for scale</li><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> 24/7 priority support</li><li><i class="fas fa-check-circle text-[#01A649] mr-2"></i> Migration & DevOps</li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact-section" class="py-24 bg-white border-t border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 md:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-semibold text-[#281018]">Let's Talk</h2>
+                    <p class="text-[#6c6c70] mt-4">Have a question or want to work together? Fill out the form and we'll get back to you within 24 hours.</p>
+                    
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#f2f2f5] rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-[#01A649]"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Visit Us</p>
+                                <p class="text-sm text-[#6c6c70]">Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#f2f2f5] rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-[#01A649]"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Email Us</p>
+                                <p class="text-sm text-[#6c6c70]">hello@bdcrafter.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#f2f2f5] rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone-alt text-[#01A649]"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Call Us</p>
+                                <p class="text-sm text-[#6c6c70]">+880 1XXX-XXXXXX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form method="POST" action="{% url 'core:home' %}" class="space-y-5">
+                        {% csrf_token %}
+                        <input type="hidden" name="contact_submit" value="1">
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-[#281018] mb-2">Name</label>
+                            {{ contact_form.name }}
+                            {% if contact_form.name.errors %}
+                                <p class="text-red-500 text-xs mt-1">{{ contact_form.name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#281018] mb-2">E-mail <span class="text-red-500">*</span></label>
+                            {{ contact_form.email }}
+                            {% if contact_form.email.errors %}
+                                <p class="text-red-500 text-xs mt-1">{{ contact_form.email.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#281018] mb-2">Subject</label>
+                            {{ contact_form.subject }}
+                            {% if contact_form.subject.errors %}
+                                <p class="text-red-500 text-xs mt-1">{{ contact_form.subject.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[#281018] mb-2">Message <span class="text-red-500">*</span></label>
+                            {{ contact_form.message }}
+                            {% if contact_form.message.errors %}
+                                <p class="text-red-500 text-xs mt-1">{{ contact_form.message.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary py-3 text-center">
+                            Send Message <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
